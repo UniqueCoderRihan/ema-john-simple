@@ -10,6 +10,11 @@ const Shop = () => {
         .then(res=>res.json())
         .then(data => setProducts(data))
     }, [])
+
+    // Add to cart function decleare and This will Be Export as a Prop with Components
+    const cartHandaler = (product)=>{
+        console.log('added',product);
+    }
     return (
         <div className='shop-container'>
             <div className="products-container">
@@ -17,6 +22,8 @@ const Shop = () => {
                     products.map(product => <Product
                     key={product.id}
                     product = {product}
+                    // export data as a props
+                    cartHandaler = {cartHandaler}
                     ></Product>)
                 }
             </div>

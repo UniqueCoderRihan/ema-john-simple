@@ -3,9 +3,9 @@ import './Product.css';
 
 const Product = (props) => {
     const {name,seller,price,img, ratings} = props.product;
-    const cartHandaler = (product)=>{
-        console.log('added',product);
-    }
+    const cartHandaler = props.cartHandaler;
+    // console.log(cartHandaler);
+    
     return (
         <div className='product'>
             <img src={img} alt="" />
