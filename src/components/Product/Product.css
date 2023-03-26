@@ -3,6 +3,7 @@
     height: 508px;
     border: 1px solid #95A0A7;
     border-radius: 8px;
+    position: relative;
 }
 .product img{
     width: 286px;
@@ -26,4 +27,15 @@
 }
 .product-info p{
     margin-top: 5px;
+}
+.btn-cart{
+    position: absolute;
+    width: 100%;
+    background: #FFE0B3;
+    border: 1px solid #95A0A7;
+    border-radius: 0px 0px 8px 8px;
+    bottom: 0;
+}
+.btn-cart :hover {
+    background-color: orange;
 }
