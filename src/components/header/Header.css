@@ -1,0 +1,17 @@
+.header{
+    background-color: #1C2B35;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.page-list a{
+    text-decoration: none;
+    color: #FFFF;
+    margin-left: 30px;
+}
+.page-list a:hover{
+    color: orange;
+}
