@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = (props) => {
-    console.log(props);
+    // console.log(props);
     const {cart} = props;
     console.log(cart);
     let total = 0;
@@ -14,7 +14,7 @@ const Cart = (props) => {
         
     }
     let tax = total * 7/100;
-    console.log(tax);
+    // console.log(tax);
     const GrandTotal = total + tax+ shipping;
     return (
         <div className='cart'>
