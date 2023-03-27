@@ -13,8 +13,9 @@ const Shop = () => {
     }, [])
 
     // Add to cart function decleare and This will Be Export as a Prop with Components
-    const cartHandaler = (product)=>{ 
+    const cartHandaler = (product)=>{
         const newCart = [...cart, product]
+        
         setCart(newCart);
        }
        
