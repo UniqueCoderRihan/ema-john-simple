@@ -4,6 +4,7 @@ import './Shop.css'
 
 const Shop = () => {
     const [ products , setProducts ]= useState([]);
+    const [cart,setCart] = useState([]);
 
     useEffect(() =>{
         fetch('products.json')
@@ -12,9 +13,11 @@ const Shop = () => {
     }, [])
 
     // Add to cart function decleare and This will Be Export as a Prop with Components
-    const cartHandaler = (product)=>{
-        console.log('added',product);
-    }
+    const cartHandaler = (product)=>{ 
+        const newCart = [...cart, product]
+        setCart(newCart);
+       }
+       
     return (
         <div className='shop-container'>
             <div className="products-container">
@@ -29,6 +32,8 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <h4>Order Summary</h4>
+                <p>Selected Items: {cart.length}</p>
+                <p>Total Price:</p>
             </div>
         </div>
     );
