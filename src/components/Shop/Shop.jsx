@@ -14,10 +14,23 @@ const Shop = () => {
         .then(data => setProducts(data))
     }, []);
 
+    // useEffect(()=>{
+    //     const storedCart = getShoppingCart();
+    //     // console.log(storedCart);
+    //     // step-1:get id
+    //     for(const id in storedCart){
+    //         // get the products by id
+    //         const savedProducts = products.find(product => product.id=== id)
+    //         console.log(savedProducts);
+    //     }
+    // }, [products])
+
     useEffect(()=>{
         const storedCart = getShoppingCart();
-        console.log(storedCart);
-    }, [])
+        for(const id in storedCart){
+            const savedProducts = products.find(product=> product.id === id)
+        }
+    },[])
 
     // Add to cart function decleare and This will Be Export as a Prop with Components
     const cartHandaler = (product)=>{
