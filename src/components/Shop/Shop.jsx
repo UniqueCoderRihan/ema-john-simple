@@ -30,7 +30,7 @@ const Shop = () => {
         for(const id in storedCart){
             const savedProducts = products.find(product=> product.id === id)
         }
-    },[])
+    },[products])
 
     // Add to cart function decleare and This will Be Export as a Prop with Components
     const cartHandaler = (product)=>{
