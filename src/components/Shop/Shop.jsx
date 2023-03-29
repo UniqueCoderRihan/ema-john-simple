@@ -20,16 +20,26 @@ const Shop = () => {
     //     // step-1:get id
     //     for(const id in storedCart){
     //         // get the products by id
-    //         const savedProducts = products.find(product => product.id=== id)
-    //         console.log(savedProducts);
+    //         const addedProducts = products.find(product => product.id=== id)
+    //         console.log(addedProducts);
     //     }
     // }, [products])
 
     useEffect(()=>{
         const storedCart = getShoppingCart();
+        const savedCart = [];
         for(const id in storedCart){
-            const savedProducts = products.find(product=> product.id === id)
+            const addedProducts = products.find(product=> product.id === id)
+            if(addedProducts){
+                const quantity = storedCart[id];
+                // console.log(quantity);
+                addedProducts.quantity = quantity;
+                console.log(addedProducts);
+                savedCart.push(addedProducts)
+            }
+            // console.log('added Products',);
         }
+        setCart(savedCart)
     },[products])
 
     // Add to cart function decleare and This will Be Export as a Prop with Components
