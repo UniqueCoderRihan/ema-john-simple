@@ -16,6 +16,9 @@ const Orders = () => {
         setCart(remaining)
         removeFromDb(id);
     }
+    const handleClearCart =()=>{
+        setCart([]);
+    }
 
     return (
         <div className='shop-container'>
@@ -30,7 +33,9 @@ const Orders = () => {
                 }
             </div>
             <div className='cart-container'>
-                <Cart cart={cart}></Cart>
+                <Cart
+                handleClearCart={handleClearCart} 
+                cart={cart}></Cart>
             </div>
         </div>
     );
