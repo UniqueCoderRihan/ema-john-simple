@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
 import '../Shop/Shop.css'
-import { useLoaderData } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Order.css';
 import { removeFromDb } from '../../utilities/fakedb';
+import { faMoneyCheckAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Orders = () => {
 
@@ -35,7 +37,11 @@ const Orders = () => {
             <div className='cart-container'>
                 <Cart
                 handleClearCart={handleClearCart} 
-                cart={cart}></Cart>
+                cart={cart}>
+                    <Link to='/checkout'>
+                    <button>Pay <FontAwesomeIcon icon={faMoneyCheckAlt} /></button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
