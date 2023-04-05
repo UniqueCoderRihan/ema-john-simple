@@ -9,8 +9,10 @@ const CartProductsLoader = async ()=>{
     // amra for of marbo array er upor ar for in marbo object er upor.
     const storeCart = getShoppingCart();
     const savedCart = [];
+    
     for(const id in storeCart){
         const adddedProduct = products.find(pd => pd.id === id);
+        console.log(storeCart[id]); 
         if(adddedProduct){
             const quantity = storeCart[id];
             adddedProduct.quantity = quantity;
