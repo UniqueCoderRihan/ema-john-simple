@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Singup.css' 
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Singup = () => {
+    const {CreateUserEmail} = useContext(AuthContext)
     const [error,setError] = useState('')
     const handleSingup =(event)=>{
         event.preventDefault();
@@ -11,7 +13,8 @@ const Singup = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
         console.log(email,password,confirm);
-
+        form.reset();
+        setError('')
         if(password !==confirm){
             setError('Your Password Not Match!')
             return
@@ -19,7 +22,14 @@ const Singup = () => {
         else if(password <6){
             setError('Password Must Be 6 Charcter!')
         }
-
+        CreateUserEmail(email,password)
+        .then(res=>{
+            console.log(console.log(res.user));
+        })
+        .catch(error=>{
+            console.log(error.message);
+            setError(error.message)
+        })
     }
     return (
         <div className='form-container'>
