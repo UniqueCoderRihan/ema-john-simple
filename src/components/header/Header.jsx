@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Header = () => {
-    const {user} = useContext(AuthContext);
+    const {user,SingOutUser} = useContext(AuthContext);
+    console.log(user);
+    const handleLogOut=()=>{
+        SingOutUser()
+        .then(()=>{ })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
     return (
         <nav className='header'>
             <img src={logo} alt="" />
@@ -15,7 +23,7 @@ const Header = () => {
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/singup">SingUp</Link>
-                {user && <span>Welcome, {user.displayName}</span> }
+                {user && <span className='text-white'>Welcome, {user.displayName} <button onClick={handleLogOut}>LogOut</button> </span> }
             </div>
         </nav>
     );
