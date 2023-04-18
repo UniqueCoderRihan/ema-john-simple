@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 
 
 const Login = () => {
-    const {SingIn} = useContext(AuthContext);
+    const {SingIn,continueWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation()
     console.log(location);
@@ -25,10 +25,21 @@ const Login = () => {
         SingIn(email,password)
         .then(res=>{
             console.log(res.user);
+            navigate(from,{replace: true})
         })
         .catch(error=>{
             console.log(error.message);
         })
+
+        
+    }
+    const handleGoogle=()=>{
+        continueWithGoogle()
+        .then(()=>{})
+        .catch(error=>{
+            console.log(error.message);
+        })
+        
     }
     return (
         <div className='form-container'>
@@ -44,7 +55,7 @@ const Login = () => {
                 </div>
                 <button className='btn-submit'>Login</button>
             </form>
-            <p><small>New To Ema-Jhon? <Link to='/singup'>Create Account</Link></small></p>
+            <p><small>New To Ema-Jhon? <Link to='/singup'>Create Account</Link> or <span onClick={handleGoogle} >Continue With Google</span></small></p>
         </div>
     );
 };

@@ -4,8 +4,17 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 const Singup = () => {
-    const {CreateUserEmail} = useContext(AuthContext)
+    const {CreateUserEmail,continueWithGoogle} = useContext(AuthContext)
     const [error,setError] = useState('')
+    
+    const handleGoogle=()=>{
+        continueWithGoogle()
+        .then(()=>{})
+        .catch(error=>{
+            setError(error.message)
+        })
+    }
+    
     const handleSingup =(event)=>{
         event.preventDefault();
         const form = event.target;
@@ -31,6 +40,7 @@ const Singup = () => {
             setError(error.message)
         })
     }
+
     return (
         <div className='form-container'>
             <h2 className='form-title'>Please Register </h2>
@@ -49,7 +59,7 @@ const Singup = () => {
                 </div>
                 <button className='btn-submit'>Register</button>
             </form>
-            <p><small>Alredy Have an Account? <Link to='/login'>Login</Link></small></p>
+            <p><small>Alredy Have an Account? <Link to='/login'>Login</Link> Or <span onClick={handleGoogle}>Continue With Google</span> </small></p>
             <p>
                 {error && <p className='text-error'>
                     {error}
